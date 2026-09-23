@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Dotfiles"
+  short_description: "Sync one local configuration with this dotfiles repository"
+  default_prompt: "Use $sync to push my Ghostty config into this repository; review the changes without committing or pushing to GitHub."

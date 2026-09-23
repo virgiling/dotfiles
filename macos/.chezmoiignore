@@ -1,0 +1,3 @@
+{{ if ne .chezmoi.os "darwin" }}
+{{ fail "The macos source is only for macOS. Select the source for your operating system." }}
+{{ end }}

@@ -1,0 +1,3 @@
+{{ if ne .chezmoi.os "linux" }}
+{{ fail "The linux source contains historical Arch Linux settings. Do not apply it on macOS." }}
+{{ end }}

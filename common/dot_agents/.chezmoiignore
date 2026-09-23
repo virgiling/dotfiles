@@ -1,0 +1,10 @@
+# Ignore generated/internal files when adding or deploying agent configuration.
+**/__pycache__
+**/__pycache__/**
+**/*.pyc
+**/*.pyo
+**/.DS_Store
+**/.git
+**/.git/**
+**/node_modules
+**/node_modules/**

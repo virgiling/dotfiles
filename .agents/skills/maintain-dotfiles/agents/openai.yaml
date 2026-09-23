@@ -1,0 +1,4 @@
+interface:
+  display_name: "维护 dotfiles"
+  short_description: "维护本仓库的系统配置、软件清单和文档，并验证项目隔离边界"
+  default_prompt: "使用 $maintain-dotfiles 维护本仓库的配置或软件清单，并在隔离目录中验证，不自动部署到本机。"

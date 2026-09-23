@@ -1,0 +1,3 @@
+{{ if and (ne .chezmoi.os "darwin") (ne .chezmoi.os "linux") }}
+{{ fail "The common source is only for macOS and Linux." }}
+{{ end }}

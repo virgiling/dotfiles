@@ -1,0 +1,14 @@
+.DS_Store
+/tmp/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+**/auth.json
+**/dot_ssh/
+**/private_dot_ssh/
+**/fish_variables
+
+# Global C/C++ ignore rules such as *.d must not hide Fish's config directory.
+!/macos/dot_config/fish/conf.d/
+!/macos/dot_config/fish/conf.d/**

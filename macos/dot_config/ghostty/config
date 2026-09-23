@@ -1,0 +1,167 @@
+# macOS + MD IO balanced setup
+
+# ----------------------------
+# Font: MD IO
+# ----------------------------
+# 先用 `ghostty +list-fonts | grep -i "MD IO"` 确认本机实际 family 名。
+# Ghostty 的 font-family 可重复写，用于 fallback；macOS emoji 默认会用 Apple Color Emoji。
+font-family = "MD IO"
+# 如果你经常在终端里显示中文，可取消下一行作为 CJK fallback：
+# font-family = "PingFang SC"
+
+# MD IO 500 Medium 在 Retina 上比 Regular 更稳；若你的 MD IO 没有这些 style，
+# 删除 font-style* 四行，只保留 font-family 即可。
+font-style = Medium
+font-style-bold = Bold
+font-style-italic = Medium Italic
+font-style-bold-italic = Bold Italic
+font-synthetic-style = false
+
+font-size = 18
+adjust-cell-height = 25%
+adjust-cursor-height = 0
+
+# MD IO 本身有面向可读性的“accessible ligatures”，不建议默认关掉。
+# 如果你明确讨厌编程连字，再取消下一行：
+# font-feature = -calt, -liga, -dlig
+
+# 如果你觉得 Ghostty/CoreText 渲染偏细，可把下面两行打开：
+# font-thicken = true
+# font-thicken-strength = 24
+
+
+# ----------------------------
+# Theme / window appearance
+# ----------------------------
+theme = "Kitty Default"
+
+# 透明度 + blur 是 macOS 上比较舒服的视觉方案；追求极致对比/续航可改为 1。
+background-opacity = 0.88
+background-opacity-cells = true
+background-blur = true
+
+cursor-style = block
+cursor-style-blink = false
+cursor-opacity = 1
+mouse-hide-while-typing = true
+
+window-padding-x = 10
+window-padding-y = 8
+window-padding-balance = true
+window-padding-color = extend
+
+window-width = 120
+window-height = 36
+window-step-resize = true
+window-new-tab-position = current
+window-save-state = always
+
+# macOS 原生边框、圆角和 traffic lights 都保留；透明 titlebar 视觉最干净。
+macos-titlebar-style = transparent
+macos-window-buttons = visible
+macos-window-shadow = true
+
+# 不启用非原生 fullscreen，因为 Ghostty 文档说明 non-native fullscreen 与 macOS tabs 不兼容。
+macos-non-native-fullscreen = false
+
+
+# ----------------------------
+# Shell / cwd / SSH
+# ----------------------------
+shell-integration = detect
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo
+
+window-inherit-working-directory = true
+tab-inherit-working-directory = true
+split-inherit-working-directory = true
+
+
+# ----------------------------
+# Clipboard / links / safety
+# ----------------------------
+copy-on-select = false
+clipboard-read = ask
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
+title-report = false
+
+link-url = true
+link-previews = osc8
+
+
+# ----------------------------
+# Scrollback / splits
+# ----------------------------
+# 单位是 bytes；这里是 100 MiB。Ghostty 文档说明 scrollback 是每个 terminal surface 计。
+scrollback-limit = 104857600
+scrollbar = never
+
+unfocused-split-opacity = 0.92
+split-preserve-zoom = navigation
+
+
+# ----------------------------
+# macOS behavior / security
+# ----------------------------
+# 左 Option 当 Alt/Meta，右 Option 保留 macOS 输入特殊字符的能力。
+macos-option-as-alt = left
+
+macos-auto-secure-input = true
+macos-secure-input-indication = true
+macos-shortcuts = ask
+
+quit-after-last-window-closed = false
+confirm-close-surface = true
+undo-timeout = 10s
+
+auto-update = check
+auto-update-channel = stable
+
+
+# ----------------------------
+# Notifications for long commands
+# 需要较新的 Ghostty；如果 validate-config 报错，删除这三行。
+# ----------------------------
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 30s
+
+
+# ----------------------------
+# Quick terminal
+# 全局快捷键需要 macOS Accessibility 权限。
+# 如果 Cmd+` 与你的窗口切换冲突，就注释掉这一行。
+# ----------------------------
+quick-terminal-position = top
+quick-terminal-size = 38%
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0.12
+quick-terminal-autohide = true
+quick-terminal-space-behavior = move
+# keybind = global:ctrl+backquote=toggle_quick_terminal
+
+
+# ----------------------------
+# Keybindings: keep macOS muscle memory
+# ----------------------------
+keybind = cmd+shift+p=toggle_command_palette
+
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+shift+enter=toggle_split_zoom
+
+keybind = cmd+alt+left=goto_split:left
+keybind = cmd+alt+right=goto_split:right
+keybind = cmd+alt+up=goto_split:up
+keybind = cmd+alt+down=goto_split:down
+
+keybind = cmd+ctrl+left=resize_split:left,10
+keybind = cmd+ctrl+right=resize_split:right,10
+keybind = cmd+ctrl+up=resize_split:up,10
+keybind = cmd+ctrl+down=resize_split:down,10
+keybind = cmd+ctrl+equal=equalize_splits
+
+keybind = cmd+k=clear_screen
+keybind = cmd+enter=toggle_fullscreen
+keybind = cmd+shift+comma=reload_config

@@ -1,0 +1,29 @@
+[user]
+	name = Dian Ling
+	email = virgiling7@gmail.com
+	signingkey = /Users/virgil/.ssh/id_ed25519.pub
+[http]
+	proxy = http://127.0.0.1:7897
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = osxkeychain
+[core]
+	pager = delta
+	excludesfile = /Users/virgil/.gitignore
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = true
+[merge]
+	conflictStyle = zdiff3
+[init]
+	templatedir = /Users/virgil/.git-template
