@@ -12,3 +12,6 @@ set -g fish_color_autosuggestion 555 --italic
 
 # Pi
 fish_add_path "/Users/virgil/.local/share/fnm/node-versions/v24.19.0/installation/bin"
+
+
+test -f '/Users/virgil/.local/share/inshellisense/init/fish/init.fish' && source '/Users/virgil/.local/share/inshellisense/init/fish/init.fish'
